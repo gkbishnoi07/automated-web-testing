@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
-from playwright_tests import test_site
+from playwright_tests.test_site import test_website
 
 app = FastAPI()
 
@@ -24,5 +24,5 @@ def home():
 
 @app.get("/test-url")
 def test_url(target: str = Query(..., description="Website URL to test")):
-    result = test_site(target)
+    result = test_website(target)
     return result
