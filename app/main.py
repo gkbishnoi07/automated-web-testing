@@ -1,18 +1,18 @@
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
-from playwright_tests.test_site import test_site
+from playwright_tests import test_site
 
 app = FastAPI()
 
-# Add CORS middleware
+# CORS settings for Netlify frontend
 origins = [
     "https://automated-web-testing.netlify.app",
-    # Add other allowed origins if any, or use "*" to allow all (not recommended for production)
+    # Add additional origins as needed
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # or ["*"] to allow all origins
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
